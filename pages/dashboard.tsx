@@ -44,7 +44,7 @@ export default function Dashboard() {
 
     if (token && open_id) {
       axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user-info?token=${token}&open_id=${open_id}`
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/user-info?token=${token}&open_id=${open_id}`
       ).then(res => {
         setUser(res.data.data.user); // TikTok responde en data.data.user
       }).catch(console.error);
