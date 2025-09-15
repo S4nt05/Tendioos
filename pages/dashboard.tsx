@@ -29,7 +29,7 @@ export default function Dashboard() {
 
   const fetchPosts = async () => {
     try {
-      const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/local/list`); // endpoint local para listar posts guardados (backend debe exponerlo si quieres)
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/posts/local/list`); // endpoint local para listar posts guardados (backend debe exponerlo si quieres)
       setPosts(res.data || []);
     } catch (err) {
       console.log('no local posts', err);
