@@ -31,8 +31,7 @@ const handleUpload = async () => {
   try {
     const res = await axios.post(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts/upload`,
-      formData,
-      { headers: { 'Content-Type': 'multipart/form-data' } }
+      formData
     );
     alert('Publicado: ' + JSON.stringify(res.data));
   } catch (err: any) {
