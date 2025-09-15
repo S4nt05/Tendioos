@@ -7,17 +7,16 @@ export default function UploadPage() {
   const [hashtags, setHashtags] = useState('');
 
   const handleUpload = async () => {
-    // if (!file) return;
-    // const formData = new FormData();
-    // formData.append('video', file as any);
-    // formData.append('description', description);
-    // formData.append('hashtags', JSON.stringify(hashtags.split(',')));
-    // formData.append('access_token', localStorage.getItem('tendioo_access_token')); // token de backend
-    // formData.append('open_id', localStorage.getItem('tendioo_open_id'));
+    if (!file) return;
+    const formData = new FormData();
+    formData.append('video', file as any);
+    formData.append('description', description);
+    formData.append('hashtags', JSON.stringify(hashtags.split(',')));
+    formData.append('access_token', localStorage.getItem('tendioo_access_token')); // token de backend
+    formData.append('open_id', localStorage.getItem('tendioo_open_id'));
 
-    // const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/posts/upload`, formData);
-    // alert('Publicado: ' + JSON.stringify(res.data));
-    alert('access_token : '+ localStorage.getItem('tendioo_access_token') + " open_id : "+ localStorage.getItem('tendioo_open_id'));
+    const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/posts/upload`, formData);
+    alert('Publicado: ' + JSON.stringify(res.data));
   };
 
   return (
