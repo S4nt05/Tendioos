@@ -17,7 +17,7 @@ const VideoUploader: React.FC<Props> = ({ accessToken }) => {
     fd.append('video', file);
     fd.append('description', description);
     fd.append('hashtags', hashtags);
-    fd.append('access_token', accessToken || '');
+    fd.append('access_token', accessToken || localStorage.getItem('tendioo_accessToken'));
     fd.append('open_id', localStorage.getItem('tendioo_open_id') || '');
 
     // Si deseas programar, guardamos en DB (endpoint /api/posts/schedule)
