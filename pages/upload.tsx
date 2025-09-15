@@ -6,18 +6,40 @@ export default function UploadPage() {
   const [description, setDescription] = useState('');
   const [hashtags, setHashtags] = useState('');
 
-  const handleUpload = async () => {
-    if (!file) return;
-    const formData = new FormData();
-    formData.append('video', file as any);
-    formData.append('description', description);
-    formData.append('hashtags', JSON.stringify(hashtags.split(',')));
-    formData.append('access_token', 'TOKEN_USUARIO'); // token de backend
-    formData.append('open_id', 'OPEN_ID_USUARIO');
+  // const handleUpload = async () => {
+  //   if (!file) return;
+  //   const formData = new FormData();
+  //   formData.append('video', file as any);
+  //   formData.append('description', description);
+  //   formData.append('hashtags', JSON.stringify(hashtags.split(',')));
+  //   formData.append('access_token', 'TOKEN_USUARIO'); // token de backend
+  //   formData.append('open_id', 'OPEN_ID_USUARIO');
 
-    const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/posts/upload`, formData,{ headers: { 'Content-Type': 'multipart/form-data' } });
+  //   const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/posts/upload`, formData,{ headers: { 'Content-Type': 'multipart/form-data' } });
+  //   alert('Publicado: ' + JSON.stringify(res.data));
+  // };
+const handleUpload = async () => {
+  if (!file) return;
+
+  const formData = new FormData();
+  formData.append('video', file); // nombre = 'video'
+  formData.append('description', description);
+  formData.append('hashtags', JSON.stringify(hashtags.split(',').map(h => h.trim())));
+  formData.append('access_token', 'TOKEN_USUARIO'); 
+  formData.append('open_id', 'OPEN_ID_USUARIO');
+
+  try {
+    const res = await axios.post(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/posts/upload`,
+      formData,
+      { headers: { 'Content-Type': 'multipart/form-data' } }
+    );
     alert('Publicado: ' + JSON.stringify(res.data));
-  };
+  } catch (err: any) {
+    console.error('Error upload:', err.response?.data || err.message);
+    alert('Error al subir video: ' + (err.response?.data?.error || err.message));
+  }
+};
 
   return (
     <div className="p-4">
