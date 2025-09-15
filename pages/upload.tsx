@@ -9,7 +9,7 @@ export default function UploadPage() {
   const handleUpload = async () => {
     if (!file) return;
     const formData = new FormData();
-    formData.append('videoPath', file as any);
+    formData.append('video', file as any);
     formData.append('description', description);
     formData.append('hashtags', JSON.stringify(hashtags.split(',')));
     formData.append('access_token', 'TOKEN_USUARIO'); // token de backend
