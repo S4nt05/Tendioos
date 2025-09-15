@@ -7,7 +7,7 @@ export default function TikTokCallback() {
 
   useEffect(() => {
     const { access_token, open_id } = router.query;
-alert(!access_token ? access_token : 'token_vacio ' + !open_id ? open_id : 'openId_vacio');
+
     if (access_token && open_id) {
       localStorage.setItem('tendioo_access_token', access_token as string);
       localStorage.setItem('tendioo_open_id', open_id as string);

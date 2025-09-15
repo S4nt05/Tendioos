@@ -42,6 +42,12 @@ export default function Dashboard() {
     const token = params.get('token');
     const open_id = params.get('open_id');
 
+    
+    if(!localStorage.getItem('tendioo_access_token'))
+      localStorage.setItem('tendioo_access_token',token as string);
+    if(!localStorage.getItem('tendioo_open_id'))
+      localStorage.setItem('tendioo_open_id', open_id as string);
+
     if (token && open_id) {
       axios.get(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/user-info?token=${token}&open_id=${open_id}`
