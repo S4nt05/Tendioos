@@ -15,7 +15,7 @@ export default function UploadPage() {
     formData.append('access_token', 'TOKEN_USUARIO'); // token de backend
     formData.append('open_id', 'OPEN_ID_USUARIO');
 
-    const res = await axios.post('http://localhost:5000/api/posts/upload', formData);
+    const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/posts/upload`, formData);
     alert('Publicado: ' + JSON.stringify(res.data));
   };
 
