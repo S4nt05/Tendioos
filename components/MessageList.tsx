@@ -21,7 +21,6 @@ const MessageList: React.FC<{ accessToken?: string }> = ({ accessToken }) => {
 
   const fetchMessages = async () => {
     try {
-      console.log('accessToken : ',accessToken , ' tendioo_access_token : ',localStorage.getItem('tendioo_access_token'));
       const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:5000'}/api/messages`, {
         params: { access_token: accessToken || localStorage.getItem('tendioo_access_token') }
       });
