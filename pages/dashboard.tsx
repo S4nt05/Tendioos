@@ -120,10 +120,10 @@ export default function Dashboard() {
         <MessageList accessToken={accessToken} />
       </section>
       
-      <section className="mt-8">
+      {/* <section className="mt-8">
         <h3 className="font-semibold mb-2">Estadisticas</h3>
         <TikTokStats accessToken={accessToken} />
-      </section>
+      </section> */}
     </div>
   );
 }
