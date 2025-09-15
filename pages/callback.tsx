@@ -6,10 +6,10 @@ export default function TikTokCallback() {
   const router = useRouter();
 
   useEffect(() => {
-    const { access_token, open_id } = router.query;
+    const { token, open_id } = router.query;
 
-    if (access_token && open_id) {
-      localStorage.setItem('tendioo_access_token', access_token as string);
+    if (token && open_id) {
+      localStorage.setItem('tendioo_access_token', token as string);
       localStorage.setItem('tendioo_open_id', open_id as string);
       router.replace('/dashboard'); // redirige al dashboard
     }
