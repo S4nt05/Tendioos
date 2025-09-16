@@ -57,6 +57,10 @@ export default function Dashboard() {
     }
   }, []);
 
+  function handleUpload() {
+    alert('access_token : '+ localStorage.getItem('tendioo_access_token') + " open_id : "+ localStorage.getItem('tendioo_open_id'));
+  }
+
   return (
     <div className="p-6">
       <header className="flex justify-between items-center mb-6">
@@ -124,6 +128,9 @@ export default function Dashboard() {
         <h3 className="font-semibold mb-2">Estadisticas</h3>
         <TikTokStats accessToken={accessToken} />
       </section> */}
+      <section>
+        <button onClick={handleUpload} className="mt-4 p-2 bg-blue-500 text-white rounded">Publicar</button>
+      </section>
     </div>
   );
 }
